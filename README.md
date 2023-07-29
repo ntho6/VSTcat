@@ -10,6 +10,8 @@ VSTcat is a VST search engine aimed at providing a vast collection of VSTs and p
 # Reminder
 **As a reminder, this site will never host any content other than just links, so it will never be taken down for piracy for any reason, and as it is open-source, anybody could start their own site using the same principles if they wanted.**
 
+#
+
 ##### We no host any TORRENTS files
 ##### We provide only INFORMATION on this web site!
 ##### We make an index of other torrent sites, no different than what GOOGLE does!
