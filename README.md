@@ -1,4 +1,4 @@
-# [VSTcat](https://ntho6.github.io/VSTcat/) - A fast and large VST Search Engine
+# [VSTcat](https://ntho6.github.io/VSTcat/) - A fast and minimal VST Search Engine
 <div align="center">
   <img src="/org/med/display.png" width="1200">
 </div>
