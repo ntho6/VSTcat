@@ -1,0 +1,144 @@
+@font-face {
+    src: url('./font.ttf');
+    font-family: helv;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f2f2f2;
+    font-family: helv;
+    background-color: #33373a;
+    overflow-y: hidden;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #33373a;
+    color: #dadada;
+    text-align: center;
+    font-size: 14px;
+}
+
+footer a {
+    color: #000000;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #d3d3d3;
+}
+
+hr {
+    height: 2px;
+    background-color: #000000;
+    border: none;
+}
+
+#results::-webkit-scrollbar {
+    display: none;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    height: 80vh;
+    margin-bottom: 30px;
+    max-width: 1200px;
+}
+
+#results {
+    max-height: 60vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    padding-right: 15px;
+    text-decoration: none;
+}
+
+h1, p, input, button {
+    font-family: helv;
+}
+
+input, button {
+    padding: 5px 5px;
+    margin: 5px 0 22px 0;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    border-style: inset;
+    background-color: transparent;
+    transition: 0.3s;
+    outline: 0;
+    font-size: 16px;
+}
+
+button:hover {
+    color: #212121;
+    cursor: pointer;
+}
+
+img {
+    margin-top: 30px;
+    width: 180px;
+    pointer-events: none;
+}
+
+a {
+    color: #dadada;
+    text-decoration: none;
+}
+
+.result-box {
+    background-color: #000000;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: transparent;
+    margin: 10px 0;
+}
+
+@media screen and (min-width: 2560px) {
+    .container {
+        max-width: 1200px;
+    }
+
+    img {
+        width: 360px;
+    }
+
+    input,
+    button {
+        padding: 10px 15px;
+        font-size: 20px;
+    }
+
+    .result-box {
+        padding: 20px;
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    img {
+        width: 150px;
+    }
+
+    input, button {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    #results {
+        max-height: 50vh;
+    }
+
+    .result-box {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
