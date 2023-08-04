@@ -7,7 +7,7 @@
 
 VSTcat is a VST search engine aimed at providing a vast collection of VSTs and packs without any intrusive ADS. Its goal is to offer a professional and ad-free environment for musicians and producers to easily find and access the plugins they need to enhance their music production experience. With a clean interface and no distractions, users can efficiently explore and utilize the available resources.
 
-# Reminder 
+# About 
 
 * We no host any TORRENTS files
 * We provide only INFORMATION on this web site!
