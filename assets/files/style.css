@@ -3,6 +3,18 @@
     font-family: helv;
 }
 
+html {
+    scroll-behavior: smooth;
+    transition: filter 1s;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+* {
+    transition: 1s;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -10,36 +22,24 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f2f2f2;
     font-family: helv;
-    background-color: #33373a;
-    overflow-y: hidden;
-}
-
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding: 10px;
-    background-color: #33373a;
-    color: #dadada;
-    text-align: center;
-    font-size: 14px;
-}
-
-footer a {
-    color: #000000;
-    text-decoration: none;
-}
-
-footer a:hover {
-    color: #d3d3d3;
-}
-
-hr {
-    height: 2px;
     background-color: #000000;
-    border: none;
+    overflow-y: hidden;
+    transition: 1s;
+}
+
+.about {
+    position: fixed;
+    color: #dadada;
+    top: 14px;
+    left: 14px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: 0.4s;
+}
+
+.about:hover {
+    color: #919191;
 }
 
 #results::-webkit-scrollbar {
@@ -55,18 +55,62 @@ hr {
 }
 
 #results {
-    max-height: 60vh;
     overflow-y: auto;
     scrollbar-width: thin;
     padding-right: 15px;
+    padding-left: 15px;
     text-decoration: none;
+    transition: 0.6s;
+    color: #dadada;
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    max-height: 60vh;
+}
+
+
+
+#results a:hover {
+    color: #919191;
+    cursor: pointer;
+    transition: 0.6s;
+}
+
+.result-box a {
+    text-shadow: 0px 0px 20px rgb(255, 255, 255);
+}
+
+.result-box {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    animation-delay: calc(.080s + .050s * var(--i));
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.result-box a:hover {
+    text-shadow: 0px 0px 20px rgb(255, 255, 255);
+    opacity: 70%;
+}
+
+#search-input:hover ~ #results {
+    opacity: 0.3;
 }
 
 h1, p, input, button {
     font-family: helv;
 }
 
-input, button {
+input, .search-button  {
     padding: 5px 5px;
     margin: 5px 0 22px 0;
     border: 2px solid #000000;
@@ -76,30 +120,29 @@ input, button {
     transition: 0.3s;
     outline: 0;
     font-size: 16px;
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #dadada;
 }
 
-button:hover {
-    color: #212121;
+.search-button:hover {
+    color: #919191;
     cursor: pointer;
 }
 
-img {
+.cat {
+    filter: invert(1);
     margin-top: 30px;
     width: 180px;
     pointer-events: none;
 }
 
-a {
+a, p {
     color: #dadada;
     text-decoration: none;
-}
-
-.result-box {
-    background-color: #000000;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: transparent;
-    margin: 10px 0;
 }
 
 @media screen and (min-width: 2560px) {
@@ -111,15 +154,22 @@ a {
         width: 360px;
     }
 
-    input,
-    button {
-        padding: 10px 15px;
+    input, .search-button {
+        padding: 5px 15px;
         font-size: 20px;
     }
 
     .result-box {
         padding: 20px;
         font-size: 24px;
+    }
+
+    .dark-theme #search-input:hover ~ #results {
+        opacity: 0.5;
+    }
+
+    .about, button#dark-mode-toggle {
+        font-size: 25px;
     }
 }
 
@@ -128,7 +178,7 @@ a {
         width: 150px;
     }
 
-    input, button {
+    input, .search-button {
         padding: 5px 10px;
         font-size: 14px;
     }
@@ -141,4 +191,95 @@ a {
         padding: 10px;
         font-size: 14px;
     }
+
+    #search-input:hover ~ #results {
+        opacity: 1;
+    }
+}
+
+.dark-theme {
+    transition: 1s;
+    background-color: #dadada;
+    color: #000000;
+}
+
+.dark-theme .about,
+.dark-theme input,
+.dark-theme .search-button,
+.dark-theme button,
+.dark-theme p,
+.dark-theme #results,
+.dark-theme #dark-mode-toggle,
+.dark-theme a {
+    color: #000000;
+}
+
+.dark-theme #search-input,
+.dark-theme button.search-button {
+    background: #dadada;
+}
+
+.dark-theme .search-button:hover,
+.dark-theme .about:hover,
+.dark-theme #results a:hover,
+.dark-theme #dark-mode-toggle:hover {
+    color: #747474;
+    cursor: pointer;
+    transition: 0.6s;
+}
+
+.dark-theme .search-button,
+.dark-theme input {
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.dark-theme img {
+    filter: invert(0);
+}
+
+.dark-theme .result-box a {
+    text-shadow: 0px 0px 20px black;
+    backdrop-filter: blur(4px);
+}
+
+.dark-theme .result-box {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.dark-theme .result-box a:hover {
+    text-shadow: 0px 0px 20px rgb(0, 0, 0);
+    backdrop-filter: blur(4px);
+    opacity: 70%;
+}
+
+#dark-mode-toggle {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    border: transparent;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    outline: 0;
+    font-size: 16px;
+    transition: 0.4s;
+    background-color: transparent;
+    color: #dadada;
+}
+
+#dark-mode-toggle:hover {
+    color: #919191;
+    cursor: pointer;
+}
+
+.arrow {
+    position: fixed;
+    width: 50px;
 }

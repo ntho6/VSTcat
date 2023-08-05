@@ -9,15 +9,28 @@
     <link rel="stylesheet" type="text/css" href="./assets/files/style.css">
 </head>
 
-<body>
+<body class="dark">
     <div class="container">
-        <img src="./assets/media/logo.svg">
+        <img class="cat" src="./assets/media/logo.svg">
         <p>Enter the name of the VST you want to search for:</p>
-        <input type="text" placeholder="Omnisphere..." autocomplete="off" id="search-input">
-        <button onclick="search()">Search</button>
+        <input type="text" placeholder="Omnisphere..." autocomplete="off" textarea spellcheck="false" id="search-input">
+        <button class="search-button" onclick="search()">Search</button>
+        <button id="dark-mode-toggle" onclick="toggleDarkMode()">Light</button>
         <div id="results"></div>
     </div>
     <script type="text/javascript">
+        function toggleDarkMode() {
+            var body = document.body;
+            var darkButton = document.getElementById("dark-mode-toggle");
+            if (body.classList.contains("dark-theme")) {
+                body.classList.remove("dark-theme");
+                darkButton.textContent = "Light";
+            } else {
+                body.classList.add("dark-theme");
+                darkButton.textContent = "Dark";
+            }
+        }
+
         function loadJSON(url, callback) {
             var xhr = new XMLHttpRequest();
             xhr.overrideMimeType("application/json");
@@ -35,12 +48,12 @@
         }
 
         function search() {
-            var input = document.getElementById("search-input").value.trim(); // Rimuoviamo spazi vuoti all'inizio e alla fine
+            var input = document.getElementById("search-input").value.trim();
             var results = document.getElementById("results");
             results.innerHTML = "";
 
-            if (input === "") {
-                results.innerHTML = "Please enter a search term.";
+            if (input === "" || input.length < 3) {
+                results.innerHTML = input === "" ? "Please enter a search term." : "Please enter at least three characters.";
                 return;
             }
 
@@ -76,20 +89,27 @@
         function displayResults(matches) {
             var results = document.getElementById("results");
             results.innerHTML = "";
+            matches.forEach(function (vst, index) {
+            var resultBox = document.createElement("div");
+            resultBox.className = "result-box";
+            resultBox.style = `--i: ${index};`;
+            var link = document.createElement("a");
+            link.href = vst.link;
+            link.innerHTML = vst.name;
+            resultBox.appendChild(link);
+            results.appendChild(resultBox);
+        });
+    }
+    
+        function updateResultsMaxHeight() {
+            const resultsElement = document.getElementById('results');
+            const viewportHeight = window.innerHeight;
+            const maxHeight = viewportHeight * 0.5;
+            resultsElement.style.maxHeight = `${maxHeight}px`;
+    }
+    updateResultsMaxHeight();
+    window.addEventListener('resize', updateResultsMaxHeight);
 
-            matches.forEach(function (vst) {
-                var resultBox = document.createElement("div");
-                resultBox.className = "result-box";
-
-                var link = document.createElement("a");
-                link.href = vst.link;
-                link.innerHTML = vst.name;
-
-                resultBox.appendChild(link);
-
-                results.appendChild(resultBox);
-            });
-        }
 
         document.addEventListener("keydown", function () {
             var x = event.keyCode || event.which;
@@ -98,10 +118,7 @@
             }
         });
     </script>
-    <footer>
-        <hr>
-        <a href="https://github.com/ntho6/VSTcat#reminder"> Disclaimer</a>
-    </footer>
+    <a class="about" href="https://github.com/ntho6/VSTcat#about">About</a>
 </body>
 
 </html>
