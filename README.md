@@ -1,6 +1,6 @@
 # [VSTcat](https://ntho6.github.io/VSTcat/) - A fast and minimal VST Search Engine
 <div align="center">
-  <img src="/assets/media/preview.png" width="1200">
+  <img src="/assets/media/display.png" width="1200">
 </div>
 
 # What is VSTcat?
